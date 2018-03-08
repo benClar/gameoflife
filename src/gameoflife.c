@@ -6,6 +6,10 @@ struct board {
 };
 
 
+Square getSquare(Board *b, int length, int width){
+	return b->grid[length][width];
+}
+
 Board* createBoard(int length, int width){
 	Board *b = (Board*) malloc(sizeof(Board));
 	b->grid = (Square**) malloc(length * sizeof(Square*));
@@ -19,7 +23,3 @@ Board* createBoard(int length, int width){
 	return b;
 }
 
-int main(int argc, char **argv) {
-
-	return 0;
-}

@@ -1,4 +1,6 @@
 #!/bin/bash
 
 make tests
-bin/tests
+if [[ $? == 0 ]]; then
+	bin/tests
+fi

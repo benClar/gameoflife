@@ -28,7 +28,7 @@ void testGetLength() {
 
 }
 
-int main(int argc, char *argv[]){
+int utilsTest(){
 
 	sput_start_testing();
 	sput_enter_suite("testing utils");
@@ -37,5 +37,5 @@ int main(int argc, char *argv[]){
 	sput_run_test(testGetLength);
 	sput_run_test(testStrToInt);
 	sput_finish_testing();
-	return sput_get_return_value();
+	return 0;
 }

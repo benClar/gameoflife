@@ -1,41 +1,22 @@
-#include "utilsTest.h"
+#include "gameoflifeTest.h"
 
 
 
-void testPow(){
-	sput_fail_unless(power(10,3) == 1000, "10^3 == 1000");
-	sput_fail_unless(power(10,1) == 10, "10^3 == 1000");
+void testGetBoard() {
+	int width = 10, length = 10;
+	Board *b = createBoard(length, width);
+	for(int l = 0; l < 10; l++){
+		for(int w = 0; w < 10; w++){
+			sput_fail_unless(getSquare(b, l, w) == DEAD, "init square is dead");
+		}
+	}		
 }
 
-void testCharToInt(){
-	sput_fail_unless(*charToInt('1') == 1, "1 == 1");
-	sput_fail_unless(*charToInt('9') == 9, "9 == 9");
-	sput_fail_unless(*charToInt('0') == 0, "0 == 0");
-	sput_fail_unless(charToInt('X') == NULL, "NaN");
-}
+int gameoflifeTest(){
 
-void testStrToInt() {
-	sput_fail_unless(*strToInt("9999") == 9999, "9999 == 9999");
-	sput_fail_unless(*strToInt("0") == 0, "0 == 0");
-	sput_fail_unless(*strToInt("1") == 1, "1 == 1");
-	sput_fail_unless(*strToInt("12345678") == 12345678, "12345678 == 12345678");
-}
-
-void testGetLength() {
-	char input[6] = {'h','e','l','l','o','\0'};
-	sput_fail_unless(getLength(input) == 5, "array len is 5");	
-	sput_fail_unless(getLength("hello") == 5, "array len is 5");	
-
-}
-
-int main(int argc, char *argv[]){
-
-	sput_start_testing();
-	sput_enter_suite("testing utils");
-	sput_run_test(testPow);
-	sput_run_test(testCharToInt);
-	sput_run_test(testGetLength);
-	sput_run_test(testStrToInt);
+    sput_start_testing();
+	sput_enter_suite("testing gameoflife");
+	sput_run_test(testGetBoard);
 	sput_finish_testing();
-	return sput_get_return_value();
+	return 0;
 }
